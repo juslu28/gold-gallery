@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gold Gallery</title>
+  <meta name="description" content="A walk-through 3D gallery of six works on the theme of gold from the Harvard Art Museums collection.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..700&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 3D view -->
+  <div id="stage" aria-hidden="true"></div>
+
+  <!-- Loading -->
+  <div id="loading" class="loading">Hanging the works…</div>
+
+  <!-- Entrance screen -->
+  <section id="entrance" class="entrance" aria-labelledby="entrance-title">
+    <div class="entrance-card">
+      <p class="eyebrow">Six works from the Harvard Art Museums collection</p>
+      <h1 id="entrance-title" class="gold-text">Gold</h1>
+      <p class="subtitle" id="entrance-subtitle"></p>
+      <div id="entrance-intro" class="entrance-intro"></div>
+      <ol class="checklist" aria-label="Works in the exhibition">
+        <li><span>c. 664–525 BCE</span> Horus Falcon Wearing Crown of Upper and Lower Egypt with Uraeus <em>Egyptian</em></li>
+        <li><span>406 BCE</span> Gold Tetradrachm of Akragas <em>Greek, Sicily</em></li>
+        <li><span>14th century</span> Water-moon Avalokiteshvara (Suwŏl Kwanŭm) <em>Korean, Koryŏ dynasty</em></li>
+        <li><span>c. 1590</span> America, Your Gold and Silver Fill My People <em>after Pieter Nagel and Gerard van Groeningen</em></li>
+        <li><span>18th century</span> Fans on a Stream in a Landscape <em>Tawaraya Sōtatsu, Rimpa school</em></li>
+        <li><span>1876</span> Nocturne in Grey and Gold: Chelsea Snow <em>James Abbott McNeill Whistler</em></li>
+      </ol>
+      <div class="controls-help">
+        <div class="help-desktop">
+          <p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrow keys to walk · move the mouse to look</p>
+          <p>Aim at a work and press <kbd>E</kbd> or click to read its wall label</p>
+          <p><kbd>1</kbd>–<kbd>6</kbd> to walk straight to a work · <kbd>Esc</kbd> frees the mouse</p>
+        </div>
+        <div class="help-touch">
+          <p>Left thumb: walk with the joystick · Right thumb: drag to look</p>
+          <p>Tap a work to read its wall label · Tap a number below to walk to it</p>
+        </div>
+      </div>
+      <button id="enter-btn" class="btn-gold" type="button" disabled>Enter the gallery</button>
+    </div>
+  </section>
+
+  <!-- Heads-up display -->
+  <header id="hud-title" class="hud-title" hidden>
+    <span class="gold-text">Gold</span>
+    <span class="hud-sub">Six ways of shining</span>
+  </header>
+  <button id="help-btn" class="help-btn" type="button" hidden aria-label="Show controls">?</button>
+
+  <div id="crosshair" class="crosshair" hidden></div>
+  <div id="hint" class="hint" hidden></div>
+
+  <nav id="tour" class="tour" aria-label="Walk to a work" hidden></nav>
+
+  <!-- Touch joystick -->
+  <div id="joystick" class="joystick" hidden>
+    <div id="joystick-knob" class="joystick-knob"></div>
+  </div>
+
+  <!-- Wall label panel -->
+  <aside id="label" class="label-panel" hidden aria-modal="false" aria-labelledby="label-title" role="dialog">
+    <button id="label-close" class="label-close" type="button" aria-label="Close label">×</button>
+    <div class="label-scroll">
+      <p class="label-meta"><span id="label-n"></span><span id="label-date"></span></p>
+      <p id="label-theme" class="label-theme"></p>
+      <h2 id="label-title"></h2>
+      <p id="label-maker" class="label-maker"></p>
+      <figure class="label-fig"><img id="label-img" alt=""></figure>
+      <div id="label-why" class="label-why"></div>
+      <dl id="label-tomb" class="label-tomb"></dl>
+      <div class="label-actions">
+        <a id="label-link" class="label-link" href="#" target="_blank" rel="noopener">View museum record ↗</a>
+        <div class="label-step">
+          <button id="label-prev" type="button">← Previous</button>
+          <button id="label-next" type="button">Next →</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <p class="credit">Images: Photo © President and Fellows of Harvard College. Labels written for this exhibition.</p>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+  <script src="js/textures.js"></script>
+  <script src="js/artworks.js"></script>
+  <script src="js/museum.js"></script>
+</body>
+</html>
